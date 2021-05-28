@@ -17,6 +17,7 @@ instance.interceptors.request.use(config => {
     let token = localStorage.getItem('token');
     //有token 则放到请求头上
     if (token) {
+        console.log(token)
         if (!headers.Authorization) {
             headers.Authorization = 'Bearer ' + token;
         }
