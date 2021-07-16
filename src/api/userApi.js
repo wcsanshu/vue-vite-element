@@ -1,6 +1,6 @@
 import request from '../request/request'
 
-export const PostLoginAPI = (userName, password) => request.post('/api/login', { userName, password });
+export const PostLoginAPI = (userName, password) => request.get('/login', {});
 
 export const tescApi = () => request.get('/api/json', {})
 
@@ -13,10 +13,14 @@ export const tescApi = () => request.get('/api/json', {})
  * @param {入职时间} entrtime 
  * @returns 
  */
-export const AddStaffApi = (staffname, staffjob, staffjur, entrtime) => request.post('/api/staff', {
-    staffname, staffjur, staffjob, entrtime
-})
+export const AddStaffApi = (staffname, staffjob, staffjur, entrtime) => request.post('/api/staff', { staffname, staffjur, staffjob, entrtime })
 
 
 // 员工数据获取
-export const GetStaffListApi = (page)=>request.get(`/api/stafflist/${page}`,{})
+export const GetStaffListApi = (page) => request.get(`/api/stafflist/${page}`, {})
+
+
+
+// 菜单列表获取
+
+export const GetMenuList = () => request.get("/menulist")

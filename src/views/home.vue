@@ -34,6 +34,7 @@
 import { defineComponent, ref } from "vue";
 import TreeMenu from "./navbar/navbar.vue";
 import HeaDer from "../views/header/header.vue";
+import { GetMenuList } from "../api/userApi";
 
 export default defineComponent({
   name: "Home",
@@ -43,13 +44,15 @@ export default defineComponent({
   },
   setup() {
     const userMenu = ref([]);
-    // const GetmenList = async () => {
-    //   let result = await getmenApi();
-    //   console.log(result);
-    //   const res = result.data.shift();
-    //   userMenu.value = result.data;
-    // };
-    // GetmenList();
+
+    const getMenu = async () => {
+      const result = await GetMenuList();
+      const res = result[0].data;
+      userMenu.value = res;
+    };
+
+    getMenu();
+
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath);
     };
